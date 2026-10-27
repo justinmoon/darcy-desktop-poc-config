@@ -7,7 +7,7 @@ networks:
     allow: [example.com]
 containers:
   - name: desktop
-    image: ghcr.io/justinmoon/darcy-desktop-poc-config@sha256:89573e27a626fe75537e1c0fc6d267a567f0a5205f1df2740a7fa08bb7087fc5
+    image: ghcr.io/justinmoon/darcy-desktop-poc-config@sha256:8f4bb2ec91cd2248af3adf0c48e5eb887dd12acc8ceaecd2671de70b02ac5949
     cvm_admin: true
     user: "0:0"  # Bootstrap drops all privileges before threads/API/desktop.
     read_only: true
