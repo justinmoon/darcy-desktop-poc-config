@@ -7,13 +7,15 @@ networks:
     allow: [example.com]
 containers:
   - name: desktop
-    image: ghcr.io/justinmoon/darcy-desktop-poc-config@sha256:8d7a720d93e4369907a9089283d20cce65d87893cce892ce8567216cf93054bd
-    user: "1000:1000"
+    image: ghcr.io/justinmoon/darcy-desktop-poc-config@sha256:89573e27a626fe75537e1c0fc6d267a567f0a5205f1df2740a7fa08bb7087fc5
+    cvm_admin: true
+    user: "0:0"  # Bootstrap drops all privileges before threads/API/desktop.
     read_only: true
     pids_limit: 512
     shm_size: 512m
     networks: [desktop]
     env:
+      - DESKTOP_BOOTSTRAP_USERNS: "1"
       - DESKTOP_OWNER_SHA256: "f64cf4f57f7e82e5d06af5a98e0a8d1c342ca917f8c295a0a7a33e7b2c031b6d"
     tmpfs:
       /tmp: rw,nosuid,nodev,size=1g,mode=1777
